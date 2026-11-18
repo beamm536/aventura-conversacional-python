@@ -84,12 +84,3 @@ INSTALACIONES PARA VER SI FUNCIONA DE UNA VEZ :D
 `python -m pip uninstall pygame pygame-ce -y`
 `python -m pip install --upgrade pip`
 `python -m pip install pygame-ce`
-
-
-
-
-### funciones
-
-`pygame.font.SysFont()`	Selecciona una fuente y su tamaño.
-`font.render()`	Convierte el texto en una imagen que Pygame puede dibujar.
-`screen.blit()`	Dibuja esa imagen en una posición de la ventana.
