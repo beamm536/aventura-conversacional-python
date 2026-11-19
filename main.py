@@ -1,14 +1,18 @@
 # Liberias dentro de rich que añade más color y belleza 
+import time
+import random
 from rich.align import Align
 from rich.console import Console
 from rich.text import Text
 from rich.panel import Panel
 from rich.markup import escape
 from rich.prompt import Prompt
+from rich.live import Live
+from rich.table import Table
 from rich import print
 
-
-Console().print(Align.center("RECUPERACION DE STARSHIP DE SPACEX", style="bold green"))
+# Fase 1 Introduccion
+Console().print(Align.center("RECUPERACION DE STARSHIP DE SPACEX", style="bold purple"))
 Console().print(Align.center(r"""
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -154,19 +158,61 @@ Console().print(Align.center(r"""
 ++++++++++++++++++%#+++%%+%@%=+%@@#@@@@@%@++@%@%@%+#%%##++++#%@@@#%#%**++*++%#+##=++%*++++++++++++++
 ++++++++++++++++++%#++%%++%%%#+%#@#%@@@@@@++@%@#%%###*@%+#%###%@=%%%%%#-=*++%#++##++##++++++++++++++
 +++++++++++++++++*@*%%++++%%%#*%@@#%@@@@@@=%%%%%@%%%%##*++*++@%@@#%%@@%+%*++%%++++%#%#++++++++++++++
-""", style="bold green"))
+""", style="bold purple"))
 
 console = Console()
-art = Text("ア7Kウ0ネ+ミ4Qセ%ロ2\nBツ9$エL1ヌ&ヨ6カ?P\n3ホX*い8ムR=テ0ワ#5\nЖ2フ!Cね7@リM4ソ^a\nコ&6Zゆ1:ハW9ヌ+Д3", style="bold green")
+art = Text("Comunicación urgente\nSPACEX technologies\n19 noviembre 2026\nConexión estable", style="purple")
 console.print(Align.center(art))
 
-
-
-respuesta = Prompt.ask("[bold green]> ¿Cuál es tu nombre?[/bold green]")
+respuesta = Prompt.ask("[bold white]> Ingeniero, ¿cuál es tu nombre?[/bold white]")
 terminal = f"""
-> Hola, {escape(respuesta)}.
-> Ya sabes desde hace mucho tiempo que algo no está bien aquí, pero no sabes exactamente por qué.
+> Conectando...
+> Hola, {escape(respuesta)}. Soy Nebula, tu asistente.
+> Mission Control ha dado la luz verde para el lanzamiento de Starship. ¿Estás listo para una misión que va a cambiar el mundo?
 """
 
+print(Panel(terminal, title="[white]TERMINAL[/white]", border_style="white"))
 
-print(Panel(terminal, title="[green]TERMINAL[/green]", border_style="green"))
+while True:
+    opcionLaunch = Prompt.ask("> OPCIONES: \n1. LANZAR \n2. CANCELAR \n3. VER VALORES DE LA BOLSA DE SPACEX \nIntroduce tu opción",case_sensitive=False)
+    if opcionLaunch.lower() == "1":
+        # Funcion creado para la siguiente
+        launchFaseRecup()
+
+    elif opcionLaunch.lower() == "2":
+        terminal = f"""
+        > {escape(respuesta)}, has cancelado la misión. Entiendo tus dudas, pero eso no va a venir bien en la bolsa...
+        """
+        print(Panel(terminal, title="[white]TERMINAL[/white]", border_style="white"))
+        break
+        
+
+    elif opcionLaunch.lower() == "3":
+        terminal = f"""
+        > {escape(respuesta)}, veremos los valores..."""
+        print(Panel(terminal, title="[white]TERMINAL[/white]", border_style="white"))
+
+        # usando la documentacion de rich para crear un panel vivo
+        table = Table()
+        table.add_column("Segundo")
+        table.add_column("Valor en euros")
+        # se actualiza una vez por segundo
+        with Live(table, refresh_per_second=1):
+            # crea 12 registros
+            for row in range(12):
+                time.sleep(1) 
+                # Crea un rango y generar una diferencia de hasta 5% en cada registro
+                value = random.uniform(950_000_000, 1_050_000_000)
+                table.add_row(str(row), f"{value:,.2f}")
+
+    else:
+        terminal = f"""
+        > {escape(respuesta)}, no has elegido una opción válida. Volviendo al terminal..."""
+        print(Panel(terminal, title="[white]TERMINAL[/white]", border_style="white"))
+        
+
+    
+
+
+
+# Fase 2 recuperacion
