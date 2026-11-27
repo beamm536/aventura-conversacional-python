@@ -9,6 +9,7 @@ from rich.table import Table
 import time
 import random
 import explosion_starship
+import builtins
 
 
 
@@ -535,6 +536,8 @@ def obtener_panel():
 # -----------------------------------------------------------------
 
 
+
+
 #le pasamos el parametro angulo que usaremos en la siguiente fase de mostrar un panel de control
 def monitorear_escudo_termico(angulo):
     #aqui tenemos nuestro ascii de losetas termicas
@@ -565,7 +568,7 @@ def monitorear_escudo_termico(angulo):
         opcion1_exito()
         mostrar_panel_telemetria(angulo)
         #imprimimos el panel de control, ya que el panel es lo que nos lo devuelve en el return, pero no nos lo imprime
-        print(obtener_panel())
+        builtins.print(obtener_panel())
         print()
 
         confirmacion_comienzo_fase_descenso(angulo)
