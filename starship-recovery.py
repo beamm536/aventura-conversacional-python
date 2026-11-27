@@ -110,7 +110,7 @@ Por lo que te encuentras ante lo que \033[1mdefinirá el éxito de la maniobra\0
 print(Panel(terminal_aviso, title="[green]WARNING![/green]", border_style="green"))
 
 
-
+# FASE DETERMINACION ANGULO DE ENTRADA
 funciones_fase2.pista_angulo_entrada()
 
 respuesta_angulo_entrada = Prompt.ask("[bold green]> Define el angulo de entrada[/bold green]")
@@ -118,7 +118,11 @@ entry_corridor = funciones_fase2.angulo_entry_corridor(respuesta_angulo_entrada)
 
 # PASADA LA FASE DE CORRECCION DEL ANGULO DE ENTRADA 
 # FASE DEL ESCUDO TERMICO
-funciones_fase2.monitorear_escudo_termico()
+# guardamos en una variable en nuestro archivo principal el valor que el usuario ha usado para definir el angulo de entrada
+angulo_usuario = funciones_fase2.angulo_entry_corridor(respuesta_angulo_entrada)
+funciones_fase2.monitorear_escudo_termico(angulo_usuario)
+
+
 
 
 
